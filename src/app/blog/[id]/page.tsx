@@ -1,5 +1,7 @@
 'use client';
 
+export const runtime = 'edge';
+
 import { useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import { CalendarIcon, ClockIcon, TagIcon } from '@heroicons/react/24/outline';
