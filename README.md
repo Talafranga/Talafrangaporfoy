@@ -5,18 +5,21 @@ This is my personal portfolio website built with [Next.js](https://nextjs.org), 
 ## 🚀 Features
 
 - Modern and responsive design
-- Project showcase
-- Blog section
+- Dark/light theme toggle with system preference detection
+- Project showcase with live demo links
+- Blog section with markdown support
 - Contact form
 - Privacy policy
-- Built with Next.js and React
+- Fully responsive layout for all devices
+- Interactive UI elements with smooth animations
 
 ## 🛠️ Technologies Used
 
-- Next.js
+- Next.js 14
 - React
 - TypeScript
 - Tailwind CSS
+- Framer Motion for animations
 - ESLint
 - PostCSS
 - Vercel (for deployment)
@@ -50,18 +53,31 @@ yarn dev
 ├── src/
 │   └── app/
 │       ├── components/    # Reusable React components
+│       │   ├── Header.tsx        # Navigation header
+│       │   └── ThemeToggle.tsx   # Theme switcher
+│       ├── context/       # React context
+│       │   └── ThemeContext.tsx  # Theme state management
 │       ├── constants/     # Constant values and configurations
-│       ├── blog/         # Blog section
-│       ├── projects/     # Projects section
-│       ├── contact/      # Contact form
-│       ├── privacy/      # Privacy policy
-│       ├── globals.css   # Global styles
-│       ├── layout.tsx    # Root layout component
-│       └── page.tsx      # Home page component
-├── public/              # Static assets
-├── tailwind.config.js   # Tailwind CSS configuration
-└── package.json        # Project dependencies and scripts
+│       ├── blog/          # Blog section
+│       ├── projects/      # Projects section
+│       ├── contact/       # Contact form
+│       ├── privacy/       # Privacy policy
+│       ├── globals.css    # Global styles
+│       ├── layout.tsx     # Root layout component
+│       └── page.tsx       # Home page component
+├── public/               # Static assets
+├── tailwind.config.js    # Tailwind CSS configuration
+├── next.config.js        # Next.js configuration
+└── package.json         # Project dependencies and scripts
 ```
+
+## ✨ Optimizations
+
+- Server-side rendering with Next.js
+- Responsive images and lazy loading
+- Theme persistence with localStorage
+- Optimized for Core Web Vitals
+- Smooth page transitions and animations
 
 ## 📫 Contact
 

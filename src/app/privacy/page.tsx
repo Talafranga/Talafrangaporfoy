@@ -1,10 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 import Header from '../components/Header';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Privacy() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-pulse text-3xl">Loading...</div>
+      </div>
+    );
+  }
+  
   const sections = [
     {
       title: "Information We Collect",
@@ -36,12 +53,12 @@ export default function Privacy() {
     },
     {
       title: "Contact Us",
-      content: "If you have any questions about this Privacy Policy, please contact us at your.email@example.com"
+      content: "If you have any questions about this Privacy Policy, please contact us at kamantalhaa@gmail.com"
     }
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-blue-900 text-white">
+    <main className="min-h-screen transition-colors duration-300">
       <Header />
 
       {/* Privacy Section */}
@@ -59,7 +76,7 @@ export default function Privacy() {
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Privacy Policy
             </h1>
-            <p className="text-gray-400">
+            <p className="transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
               Last Updated: April 2, 2025
             </p>
           </motion.div>
@@ -72,12 +89,13 @@ export default function Privacy() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-gray-800/50 rounded-xl p-6 border border-white/10 hover:border-blue-500/50 transition-all duration-300 backdrop-blur-sm"
+                className="rounded-xl p-6 border hover:border-blue-500/50 transition-all duration-300 backdrop-blur-sm hover-glow"
+                style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
               >
                 <h2 className="text-xl font-semibold mb-4 text-blue-400">
                   {section.title}
                 </h2>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="leading-relaxed transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
                   {section.content}
                 </p>
               </motion.div>

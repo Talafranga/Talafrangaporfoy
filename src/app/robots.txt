@@ -1,0 +1,10 @@
+# robots.txt for https://talha-kaman.com
+
+User-agent: *
+Allow: /
+
+# Disallow certain URLs
+Disallow: /privacy
+
+# Sitemap
+Sitemap: https://talha-kaman.com/sitemap.xml 

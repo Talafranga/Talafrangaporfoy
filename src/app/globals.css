@@ -2,9 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --bg-primary: rgba(255, 255, 255, 0.9);
+  --bg-secondary: rgba(255, 255, 255, 0.8);
+  --text-primary: #333;
+  --border-color: rgba(17, 24, 39, 0.1);
+  --text-secondary: #a0a0a0;
+  --text-accent: #3b82f6;
+}
+
+[data-theme='dark'] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --bg-primary: rgba(17, 24, 39, 0.8);
+  --bg-secondary: rgba(31, 41, 55, 0.6);
+  --text-primary: #f3f4f6;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-secondary: #666666;
+  --text-accent: #3b82f6;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
 @layer base {
   body {
-    @apply bg-gray-900 text-white;
+    @apply transition-colors duration-300;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    @apply transition-opacity duration-500;
+  }
+  
+  body::before {
+    background: linear-gradient(to bottom right, #111827, #000000, #1e3a8a);
+    opacity: 1;
+  }
+  
+  [data-theme='light'] body::before {
+    background: linear-gradient(to bottom right, #f9fafb, #e5e7eb, #dbeafe);
+    opacity: 1;
   }
 }
 
@@ -19,7 +74,7 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -31,11 +86,23 @@ html {
   background: #444;
 }
 
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #bbb;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
 /* Glass effect */
 .glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+[data-theme='light'] .glass {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Gradient text */
@@ -49,5 +116,86 @@ html {
 }
 
 .hover-glow {
-  @apply transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25;
+  @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/20;
+}
+
+.hover-glow:hover {
+  @apply shadow-lg;
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.25);
+}
+
+[data-theme='light'] .hover-glow:hover {
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.15);
+}
+
+/* Hover bg effect */
+.hover-bg {
+  @apply transition-colors duration-300 hover:bg-opacity-20 hover:bg-blue-500;
+}
+
+.hover-bg:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Theme icon */
+.theme-icon {
+  @apply w-5 h-5 transition-transform duration-500;
+}
+
+/* Core Web Vitals optimizations */
+
+/* Prevent layout shifts during page load */
+html.js-loading * {
+  transition: none !important;
+}
+
+/* Optimize Content Layout Shift (CLS) */
+img, video, iframe {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Optimize Largest Contentful Paint (LCP) */
+.hero-image {
+  content-visibility: auto;
+}
+
+/* Connection-based optimizations */
+.connection-4g .lazy-bg {
+  background-image: var(--bg-image);
+}
+
+.connection-slow-2g .lazy-bg,
+.connection-2g .lazy-bg,
+.connection-3g .lazy-bg {
+  background-image: var(--bg-image-low);
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Enable animations only after page load */
+.page-loaded .animate-on-load {
+  animation-play-state: running;
 }
