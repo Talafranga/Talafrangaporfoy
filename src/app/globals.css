@@ -130,11 +130,16 @@ html {
 
 /* Hover bg effect */
 .hover-bg {
-  @apply transition-colors duration-300 hover:bg-opacity-20 hover:bg-blue-500;
+  @apply transition-colors duration-300;
+  position: relative;
 }
 
 .hover-bg:hover {
-  background-color: var(--hover-bg);
+  background-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+[data-theme='light'] .hover-bg:hover {
+  background-color: rgba(59, 130, 246, 0.1) !important;
 }
 
 /* Theme icon */

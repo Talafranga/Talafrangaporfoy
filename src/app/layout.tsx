@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import { siteConfig } from "./config/siteConfig";
+import BrowserDetection from './components/BrowserDetection';
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -86,7 +87,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="js-loading">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -107,27 +108,13 @@ export default function RootLayout({
             __html: `
               // Optimize startup performance
               document.documentElement.classList.add('js-loading');
-              
-              // Add browser detection
-              const isChrome = navigator.userAgent.indexOf('Chrome') > -1;
-              const isSafari = navigator.userAgent.indexOf('Safari') > -1 && !isChrome;
-              document.documentElement.classList.add(isChrome ? 'is-chrome' : isSafari ? 'is-safari' : 'is-other-browser');
-              
-              // Detect connection speed and apply optimizations
-              if (navigator.connection && navigator.connection.effectiveType) {
-                document.documentElement.classList.add('connection-' + navigator.connection.effectiveType);
-              }
-              
-              // Mark the page as interactive as soon as possible
-              window.addEventListener('DOMContentLoaded', () => {
-                document.documentElement.classList.remove('js-loading');
-              });
             `,
           }}
         />
       </head>
       <body className={inter.className}>
         <ThemeProvider>
+          <BrowserDetection />
           {children}
         </ThemeProvider>
         
