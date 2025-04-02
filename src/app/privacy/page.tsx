@@ -60,7 +60,7 @@ export default function Privacy() {
               Privacy Policy
             </h1>
             <p className="text-gray-400">
-              Last Updated: March 15, 2024
+              Last Updated: April 2, 2025
             </p>
           </motion.div>
 
