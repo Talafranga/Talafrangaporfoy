@@ -5,8 +5,12 @@ import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import ThemeToggle from './ThemeToggle';
+import LanguageSwitcher from './LanguageSwitcher';
 import { navigationItems } from '../constants/navigation';
 import { useTheme } from '../context/ThemeContext';
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,6 +18,10 @@ export default function Header() {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const { theme } = useTheme();
+  const t = useTranslations('Navigation');
+  // Get the current locale from params
+  const params = useParams();
+  const currentLocale = (params?.locale as string) || 'en';
   
   useEffect(() => {
     setMounted(true);
@@ -64,7 +72,7 @@ export default function Header() {
   };
 
   const baseHeaderClassName = `
-    fixed w-full z-50 transition-all duration-300 
+    fixed w-full z-40 transition-all duration-300 
     ${isScrolled ? 'py-2 backdrop-blur-md' : 'py-4 backdrop-blur-sm'} 
     border-b border-gray-200/10
   `;
@@ -73,9 +81,9 @@ export default function Header() {
     return (
       <header className={`${baseHeaderClassName} bg-black/60`}>
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <a href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             Talha Kaman
-          </a>
+          </Link>
           <div className="w-10 h-10"></div>
         </div>
       </header>
@@ -87,43 +95,63 @@ export default function Header() {
     ${theme === 'dark' ? 'bg-black/60' : 'bg-white/60'}
   `;
 
+  // Get localized navigation items
+  const localizedNavItems = navigationItems.map(item => {
+    try {
+      // Use Link from next-intl/navigation which already handles locale prefixing correctly
+      return {
+        ...item,
+        label: t(item.key)
+      };
+    } catch (error) {
+      console.error(`Translation error for key: ${item.key}`, error);
+      return item; // Fallback to default label
+    }
+  });
+
   return (
     <header className={headerClassName}>
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <a href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
           Talha Kaman
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 items-center">
-          {navigationItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`flex items-center transition-all duration-300 group ${
-                pathname === item.href 
-                  ? 'text-blue-400'
-                  : 'hover:text-blue-400'
-              }`}
-              style={{ color: pathname === item.href ? undefined : 'var(--text-primary)' }}
-            >
-              <item.icon className="w-5 h-5 mr-1" />
-              <span className="relative">
-                {item.label}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
-                  pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
-                }`}></span>
-              </span>
-            </a>
-          ))}
-          <div className="pl-4 flex items-center gap-3">
+        <nav className="hidden md:flex items-center">
+          <div className="flex space-x-6 mr-6">
+            {localizedNavItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`flex items-center transition-all duration-300 group ${
+                  pathname === item.href 
+                    ? 'text-blue-400'
+                    : 'hover:text-blue-400'
+                }`}
+                style={{ color: pathname === item.href ? undefined : 'var(--text-primary)' }}
+              >
+                <item.icon className="w-5 h-5 mr-1" />
+                <span className="relative">
+                  {item.label}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
+                    pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-3 pl-4 border-l border-gray-200/20">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
         </nav>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center space-x-3 md:hidden">
+          <div className="mr-2">
+            <LanguageSwitcher />
+          </div>
           <ThemeToggle />
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -147,10 +175,10 @@ export default function Header() {
         className="md:hidden overflow-hidden"
       >
         <nav className="flex flex-col px-4 pt-2 pb-4 space-y-3">
-          {navigationItems.map((item) => {
+          {localizedNavItems.map((item) => {
             const active = pathname === item.href;
             return (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className={`flex items-center p-2 rounded-lg transition-all duration-300 group ${
@@ -168,7 +196,7 @@ export default function Header() {
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
                   )}
                 </span>
-              </a>
+              </Link>
             );
           })}
         </nav>

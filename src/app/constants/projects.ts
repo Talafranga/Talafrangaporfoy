@@ -7,6 +7,12 @@ export interface Project {
   liveDemo?: string;
   github?: string;
   featured: boolean;
+  localizations?: {
+    [locale: string]: {
+      title: string;
+      description: string;
+    }
+  }
 }
 
 export const projects: Project[] = [
@@ -18,7 +24,13 @@ export const projects: Project[] = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveDemo: 'https://talafranga.github.io/talaWeather/',
     github: 'https://github.com/Talafranga/talaWeather',
-    featured: true
+    featured: true,
+    localizations: {
+      tr: {
+        title: 'Hava Durumu Uygulaması',
+        description: 'Birim değiştirme, dil desteği ve karanlık/aydınlık mod özelliklerine sahip gerçek zamanlı bir hava durumu tahmin uygulaması.'
+      }
+    }
   }
 ];
 

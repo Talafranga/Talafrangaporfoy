@@ -2,13 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { CodeBracketIcon } from '@heroicons/react/24/outline';
-import Header from '../components/Header';
-import { projects } from '../constants/projects';
-import { useTheme } from '../context/ThemeContext';
+import Header from '../../components/Header';
+import { projects } from '../../constants/projects';
+import { useTheme } from '../../context/ThemeContext';
 import { useState, useEffect } from 'react';
-import { ProjectStructuredData } from '../components/StructuredData';
-import { siteConfig } from '../config/siteConfig';
-import OptimizedImage from '../components/OptimizedImage';
+import { ProjectStructuredData } from '../../components/StructuredData';
+import { siteConfig } from '../../config/siteConfig';
+import OptimizedImage from '../../components/OptimizedImage';
 
 interface Project {
   id: string;
@@ -19,11 +19,37 @@ interface Project {
   liveDemo?: string;
   github?: string;
   featured: boolean;
+  localizations?: {
+    [locale: string]: {
+      title: string;
+      description: string;
+    };
+  };
 }
 
-export default function Projects() {
+interface ProjectsTranslations {
+  title: string;
+  viewLiveDemo: string;
+  liveDemo: string;
+  github: string;
+}
+
+interface TranslationsProps {
+  projects: ProjectsTranslations;
+  loading: string;
+}
+
+interface ProjectsPageProps {
+  locale: string;
+  translations: TranslationsProps;
+}
+
+export default function ProjectsPage({ locale, translations }: ProjectsPageProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  
+  const t = translations.projects;
+  const loadingText = translations.loading;
   
   useEffect(() => {
     setMounted(true);
@@ -32,7 +58,7 @@ export default function Projects() {
   if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-3xl">Loading...</div>
+        <div className="animate-pulse text-3xl">{loadingText}</div>
       </div>
     );
   }
@@ -45,9 +71,9 @@ export default function Projects() {
       {projects.map((project) => (
         <ProjectStructuredData
           key={project.id}
-          name={project.title}
-          description={project.description}
-          url={`${siteConfig.url}/projects#${project.id}`}
+          name={project.localizations?.[locale]?.title || project.title}
+          description={project.localizations?.[locale]?.description || project.description}
+          url={`${siteConfig.url}/${locale}/projects#${project.id}`}
           image={project.image}
           creator={siteConfig.author.name}
           keywords={project.technologies}
@@ -63,7 +89,7 @@ export default function Projects() {
             transition={{ duration: 0.8 }}
             className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-2 leading-normal"
           >
-            My Projects
+            {t.title}
           </motion.h1>
           
           {/* Projects Grid */}
@@ -81,7 +107,7 @@ export default function Projects() {
                 <div className="h-52 overflow-hidden bg-gray-800 relative group">
                   <OptimizedImage 
                     src={project.image} 
-                    alt={project.title} 
+                    alt={project.localizations?.[locale]?.title || project.title} 
                     width={600}
                     height={400}
                     objectFit="cover"
@@ -94,15 +120,19 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
-                      <span className="px-4 py-2 bg-blue-600 text-white rounded-lg">View Live Demo</span>
+                      <span className="px-4 py-2 bg-blue-600 text-white rounded-lg">{t.viewLiveDemo}</span>
                     </a>
                   )}
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-3 transition-colors duration-300"
-                    style={{ color: 'var(--text-primary)' }}>{project.title}</h3>
+                    style={{ color: 'var(--text-primary)' }}>
+                    {project.localizations?.[locale]?.title || project.title}
+                  </h3>
                   <p className="mb-4 transition-colors duration-300"
-                    style={{ color: 'var(--text-primary)' }}>{project.description}</p>
+                    style={{ color: 'var(--text-primary)' }}>
+                    {project.localizations?.[locale]?.description || project.description}
+                  </p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech: string) => (
@@ -121,9 +151,9 @@ export default function Projects() {
                         href={project.liveDemo} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-300"
+                        className="flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300"
                       >
-                        <span>Live Demo</span>
+                        <span>{t.liveDemo}</span>
                       </a>
                     )}
                     {project.github && (
@@ -147,7 +177,7 @@ export default function Projects() {
                         }}
                       >
                         <CodeBracketIcon className="h-4 w-4 mr-2" />
-                        <span>GitHub</span>
+                        <span>{t.github}</span>
                       </a>
                     )}
                   </div>

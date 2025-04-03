@@ -1,9 +1,6 @@
-import type { Metadata } from "next";
+import './globals.css';
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "./context/ThemeContext";
-import { siteConfig } from "./config/siteConfig";
-import BrowserDetection from './components/BrowserDetection';
+import type { Metadata } from "next";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -13,72 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: siteConfig.title,
-  description: siteConfig.description,
-  keywords: ["frontend developer", "react developer", "next.js", "web development", "portfolio", "talha kaman"],
-  authors: [{ name: siteConfig.author.name }],
-  creator: siteConfig.author.name,
-  publisher: siteConfig.author.name,
-  openGraph: {
-    type: "website",
-    locale: siteConfig.seo.locale,
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [
-      {
-        url: siteConfig.images.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [siteConfig.images.ogImage],
-    creator: siteConfig.seo.defaultTwitterHandle,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  icons: {
-    icon: siteConfig.images.favicon,
-    shortcut: siteConfig.images.favicon,
-    apple: "/apple-touch-icon.png",
-  },
-  verification: {
-    google: siteConfig.seo.googleVerification,
-  },
-  alternates: {
-    canonical: siteConfig.url,
-  },
-  metadataBase: new URL(siteConfig.url),
-  themeColor: '#3b82f6',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  appleWebApp: {
-    title: siteConfig.title,
-    statusBarStyle: 'black-translucent',
-    capable: true,
-  },
+  title: {
+    template: '%s | Talha Kaman',
+    default: 'Talha Kaman | Software Developer',
+  }
 };
 
 export default function RootLayout({
@@ -87,51 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="js-loading">
+    <html className="js-loading">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        {/* Preload critical assets */}
-        <link rel="preload" as="image" href={siteConfig.images.logo} />
-        {/* Add Bing verification as a meta tag */}
-        <meta name="msvalidate.01" content={siteConfig.seo.bingVerification} />
-        
-        {/* Speed optimizations */}
-        <meta httpEquiv="x-dns-prefetch-control" content="on" />
-        <link rel="prefetch" href="/projects" />
-        <link rel="prefetch" href="/blog" />
-        
-        {/* Script to optimize web vitals (placed in head to execute early) */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Optimize startup performance
-              document.documentElement.classList.add('js-loading');
-            `,
-          }}
-        />
       </head>
       <body className={inter.className}>
-        <ThemeProvider>
-          <BrowserDetection />
-          {children}
-        </ThemeProvider>
-        
-        {/* Web Vitals Monitoring Script (loads after content) */}
-        <script 
-          defer
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Load web-vitals monitoring
-              import('/scripts/webVitals.js').then(module => {
-                module.optimizeWebVitals();
-              }).catch(err => {
-                console.error('Error loading web-vitals:', err);
-              });
-            `,
-          }}
-        />
+        {children}
       </body>
     </html>
   );

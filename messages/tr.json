@@ -1,0 +1,113 @@
+{
+  "HomePage": {
+    "title": "Mustafa Talha Kaman",
+    "jobTitle": "Software Developer",
+    "about": "Hakkımda",
+    "projects": "Projelerim",
+    "contact": "İletişim",
+    "viewProjects": "Tüm Projeleri Görüntüle",
+    "viewPosts": "Tüm Yazıları Görüntüle"
+  },
+  "About": {
+    "title": "Hakkımda",
+    "description": "Merhaba, ben Mustafa Talha Kaman, İstinye Üniversitesi'nde okuyorum. 23 yaşındayım. Yönetim Bilişim Sistemleri öğrencisiyim. Software Developer olarak çalışıyor, modern, kullanıcı dostu, temiz ve responsive tasarımlara sahip web siteleri geliştiriyorum."
+  },
+  "Projects": {
+    "title": "Öne Çıkan Projelerim",
+    "viewProject": "Projeyi Görüntüle",
+    "viewLiveDemo": "Canlı Demo",
+    "liveDemo": "Canlı Demo",
+    "github": "GitHub",
+    "description": "En son projelerimi ve çalışmalarımı keşfedin",
+    "technologies": "Kullanılan Teknolojiler",
+    "viewLive": "Canlı Görüntüle",
+    "viewCode": "Kodu Görüntüle",
+    "filter": {
+      "all": "Tümü",
+      "web": "Web",
+      "mobile": "Mobil",
+      "other": "Diğer"
+    }
+  },
+  "Blog": {
+    "title": "Son Blog Yazılarım",
+    "readMore": "Devamını Oku",
+    "readTime": "dk okuma"
+  },
+  "Contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Benimle iş teklifi için veya bir şeyler söylemek isterseniz iletişime geçebilirsiniz. En kısa sürede size geri dönüş yapacağım.",
+    "description": "Aşağıdaki formu kullanarak bana mesaj gönderin veya e-posta yoluyla iletişime geçin.",
+    "name": "Adınız",
+    "email": "E-posta Adresiniz",
+    "message": "Mesajınız",
+    "send": "Mesaj Gönder",
+    "phone": "Telefon Numarası (İsteğe Bağlı)",
+    "subject": "Konu (İsteğe Bağlı)",
+    "getInTouch": "İletişime Geçin",
+    "emailLabel": "E-posta",
+    "location": "Konum",
+    "followMe": "Beni Takip Et",
+    "success": "Mesajınız başarıyla gönderildi! En kısa sürede size geri dönüş yapacağım.",
+    "error": "Mesajınız gönderilemedi. Lütfen tekrar deneyin veya doğrudan e-posta ile iletişime geçin.",
+    "sending": "Gönderiliyor..."
+  },
+  "Privacy": {
+    "title": "Gizlilik Politikası",
+    "lastUpdated": "Son Güncelleme: 2 Nisan, 2025",
+    "sections": {
+      "informationCollect": {
+        "title": "Topladığımız Bilgiler",
+        "content": "İsminiz, e-posta adresiniz ve sağlamayı tercih ettiğiniz diğer bilgiler dahil olmak üzere doğrudan bize sağladığınız bilgileri topluyoruz. Ayrıca, web sitemizi ziyaret ettiğinizde IP adresiniz, tarayıcı türünüz ve cihaz bilgileriniz gibi bilgileri otomatik olarak topluyoruz."
+      },
+      "informationUse": {
+        "title": "Bilgilerinizi Nasıl Kullanıyoruz",
+        "content": "Topladığımız bilgileri hizmetlerimizi sağlamak, sürdürmek ve iyileştirmek, sizinle iletişim kurmak ve deneyiminizi kişiselleştirmek için kullanırız. Ayrıca bu bilgileri size hizmetlerimiz hakkında güncellemeler göndermek veya sorularınıza yanıt vermek için de kullanabiliriz."
+      },
+      "informationSharing": {
+        "title": "Bilgi Paylaşımı",
+        "content": "Kişisel bilgilerinizi üçüncü taraflara satmaz veya kiralamayız. Bilgilerinizi, web sitemizi işletmemize veya işimizi yürütmemize yardımcı olan, gizlilik yükümlülüklerine tabi hizmet sağlayıcılarla paylaşabiliriz."
+      },
+      "dataSecurity": {
+        "title": "Veri Güvenliği",
+        "content": "Kişisel bilgilerinizi yetkisiz erişime, değiştirilmeye, ifşa edilmeye veya imha edilmeye karşı korumak için uygun güvenlik önlemleri uyguluyoruz. Ancak, internet üzerinden hiçbir iletim yöntemi %100 güvenli değildir ve mutlak güvenliği garanti edemeyiz."
+      },
+      "yourRights": {
+        "title": "Haklarınız",
+        "content": "Kişisel bilgilerinize erişme, düzeltme veya silme hakkına sahipsiniz. Ayrıca, bilgilerinizin belirli şekillerde işlenmesini kısıtlama veya buna itiraz etme hakkına da sahip olabilirsiniz. Bu hakları kullanmak için lütfen bizimle iletişime geçin."
+      },
+      "cookies": {
+        "title": "Çerezler",
+        "content": "Web sitemizdeki etkinliği izlemek ve belirli bilgileri tutmak için çerezler ve benzer izleme teknolojileri kullanıyoruz. Tarayıcınızı tüm çerezleri reddetmesi veya bir çerez gönderildiğinde bunu belirtmesi için yapılandırabilirsiniz."
+      },
+      "policyChanges": {
+        "title": "Bu Politikadaki Değişiklikler",
+        "content": "Gizlilik Politikamızı zaman zaman güncelleyebiliriz. Yeni Gizlilik Politikasını bu sayfada yayınlayarak ve 'Son Güncelleme' tarihini güncelleyerek sizi herhangi bir değişiklik hakkında bilgilendireceğiz."
+      },
+      "contactUs": {
+        "title": "Bize Ulaşın",
+        "content": "Bu Gizlilik Politikası hakkında herhangi bir sorunuz varsa, lütfen kamantalhaa2@gmail.com adresinden bizimle iletişime geçin."
+      }
+    }
+  },
+  "Common": {
+    "loading": "Yükleniyor..."
+  },
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "projects": "Projeler",
+    "blog": "Blog",
+    "contact": "İletişim",
+    "privacy": "Gizlilik"
+  },
+  "Metadata": {
+    "title": "Talha Kaman | Yazılım Geliştirici",
+    "description": "Talha Kaman'ın React, Next.js ve modern web teknolojilerinde uzmanlaşmış tutkulu bir Yazılım Geliştirici olarak portfolyosu"
+  },
+  "NotFound": {
+    "title": "404",
+    "heading": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil veya taşınmış.",
+    "goHome": "Ana Sayfaya Dön"
+  }
+} 

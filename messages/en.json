@@ -1,0 +1,113 @@
+{
+  "HomePage": {
+    "title": "Mustafa Talha Kaman",
+    "jobTitle": "Software Developer",
+    "about": "About Me",
+    "projects": "My Projects",
+    "contact": "Contact Me",
+    "viewProjects": "View All Projects",
+    "viewPosts": "View All Posts"
+  },
+  "About": {
+    "title": "About Me",
+    "description": "Hello, I'm Mustafa Talha Kaman, a 23-year-old Management Information Systems student at Istinye University. I work as a Software Developer, specializing in building modern, user-friendly websites with clean and responsive designs."
+  },
+  "Projects": {
+    "title": "Featured Projects",
+    "viewProject": "View Project",
+    "viewLiveDemo": "View Live Demo",
+    "liveDemo": "Live Demo",
+    "github": "GitHub",
+    "description": "Explore my latest projects and work",
+    "technologies": "Technologies Used",
+    "viewLive": "View Live",
+    "viewCode": "View Code",
+    "filter": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "other": "Other"
+    }
+  },
+  "Blog": {
+    "title": "Latest Blog Posts",
+    "readMore": "Read More",
+    "readTime": "min read"
+  },
+  "Contact": {
+    "title": "Contact Me",
+    "subtitle": "Feel free to get in touch with me. I'll get back to you as soon as possible.",
+    "description": "Send me a message using the form below or reach out via email.",
+    "name": "Your Name",
+    "email": "Your Email",
+    "message": "Your Message",
+    "send": "Send Message",
+    "phone": "Phone Number (Optional)",
+    "subject": "Subject (Optional)",
+    "getInTouch": "Get in Touch",
+    "emailLabel": "Email",
+    "location": "Location",
+    "followMe": "Follow Me",
+    "success": "Your message has been sent successfully! I will get back to you soon.",
+    "error": "Failed to send your message. Please try again or contact me directly via email.",
+    "sending": "Sending..."
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: April 2, 2025",
+    "sections": {
+      "informationCollect": {
+        "title": "Information We Collect",
+        "content": "We collect information that you provide directly to us, including but not limited to your name, email address, and any other information you choose to provide. We also collect information automatically when you visit our website, such as your IP address, browser type, and device information."
+      },
+      "informationUse": {
+        "title": "How We Use Your Information",
+        "content": "We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to personalize your experience. We may also use this information to send you updates about our services or to respond to your inquiries."
+      },
+      "informationSharing": {
+        "title": "Information Sharing",
+        "content": "We do not sell or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website or conducting our business, subject to confidentiality obligations."
+      },
+      "dataSecurity": {
+        "title": "Data Security",
+        "content": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security."
+      },
+      "yourRights": {
+        "title": "Your Rights",
+        "content": "You have the right to access, correct, or delete your personal information. You may also have the right to restrict or object to certain processing of your information. To exercise these rights, please contact us."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      },
+      "policyChanges": {
+        "title": "Changes to This Policy",
+        "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the 'Last Updated' date."
+      },
+      "contactUs": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at kamantalhaa2@gmail.com"
+      }
+    }
+  },
+  "Common": {
+    "loading": "Loading..."
+  },
+  "Navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "privacy": "Privacy"
+  },
+  "Metadata": {
+    "title": "Talha Kaman | Software Developer",
+    "description": "Portfolio of Talha Kaman, a passionate Software Developer specializing in React, Next.js, and modern web technologies"
+  },
+  "NotFound": {
+    "title": "404",
+    "heading": "Page Not Found",
+    "description": "The page you are looking for doesn't exist or has been moved.",
+    "goHome": "Go Home"
+  }
+} 

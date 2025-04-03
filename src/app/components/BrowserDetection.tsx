@@ -19,23 +19,33 @@ export default function BrowserDetection() {
         document.documentElement.classList.add(browserClass);
       }
       
-      // "js-loading" sınıfını kaldırmak için DOMContentLoaded olayını dinliyoruz
-      const handleContentLoaded = () => {
+      // "js-loading" sınıfını kaldırmak için bir fonksiyon
+      const removeLoadingClass = () => {
         // İlk olarak js-loading sınıfını kaldır
         document.documentElement.classList.remove('js-loading');
-        
-        // Sonra page-loaded sınıfını ekle
-        // Bunu setTimeout ile yaparak hidrasyon ve ilk render arasındaki uyumsuzluğu önlüyoruz
-        setTimeout(() => {
-          document.documentElement.classList.add('page-loaded');
-        }, 0);
       };
       
+      // page-loaded sınıfını eklemek için ayrı bir fonksiyon
+      const addPageLoadedClass = () => {
+        // React hydration tamamlandıktan sonra page-loaded sınıfını ekle
+        if (!document.documentElement.classList.contains('page-loaded')) {
+          document.documentElement.classList.add('page-loaded');
+        }
+      };
+      
+      // İlk olarak yükleme sınıfını kaldır - bunu hemen yapabiliriz
       if (document.readyState === 'loading') {
-        window.addEventListener('DOMContentLoaded', handleContentLoaded);
+        window.addEventListener('DOMContentLoaded', removeLoadingClass);
       } else {
-        handleContentLoaded();
+        removeLoadingClass();
       }
+      
+      // page-loaded sınıfını daha sonra ekle, hydration tamamlandıktan sonra
+      // requestAnimationFrame kullanarak tarayıcının render döngüsünü bekleriz
+      // ve setTimeout ile daha da ertelemiş oluruz
+      window.requestAnimationFrame(() => {
+        setTimeout(addPageLoadedClass, 300); // 300ms gecikmeyle ekle
+      });
       
       // Bağlantı hızı tespiti - opsiyonel, destekleyen tarayıcılarda çalışır
       if ('connection' in navigator) {

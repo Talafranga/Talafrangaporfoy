@@ -3,12 +3,19 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ShieldCheckIcon } from '@heroicons/react/24/outline';
-import Header from '../components/Header';
-import { useTheme } from '../context/ThemeContext';
+import Header from '../../components/Header';
+import { useTheme } from '../../context/ThemeContext';
+import { useTranslations } from 'next-intl';
 
-export default function Privacy() {
+interface PrivacyPageProps {
+  locale: string;
+}
+
+export default function PrivacyPage({ locale }: PrivacyPageProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations('Privacy');
+  const commonT = useTranslations('Common');
   
   useEffect(() => {
     setMounted(true);
@@ -17,43 +24,44 @@ export default function Privacy() {
   if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-3xl">Loading...</div>
+        <div className="animate-pulse text-3xl">{commonT('loading')}</div>
       </div>
     );
   }
   
+  // Define sections based on translations
   const sections = [
     {
-      title: "Information We Collect",
-      content: "We collect information that you provide directly to us, including but not limited to your name, email address, and any other information you choose to provide. We also collect information automatically when you visit our website, such as your IP address, browser type, and device information."
+      title: t('sections.informationCollect.title'),
+      content: t('sections.informationCollect.content')
     },
     {
-      title: "How We Use Your Information",
-      content: "We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to personalize your experience. We may also use this information to send you updates about our services or to respond to your inquiries."
+      title: t('sections.informationUse.title'),
+      content: t('sections.informationUse.content')
     },
     {
-      title: "Information Sharing",
-      content: "We do not sell or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website or conducting our business, subject to confidentiality obligations."
+      title: t('sections.informationSharing.title'),
+      content: t('sections.informationSharing.content')
     },
     {
-      title: "Data Security",
-      content: "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security."
+      title: t('sections.dataSecurity.title'),
+      content: t('sections.dataSecurity.content')
     },
     {
-      title: "Your Rights",
-      content: "You have the right to access, correct, or delete your personal information. You may also have the right to restrict or object to certain processing of your information. To exercise these rights, please contact us."
+      title: t('sections.yourRights.title'),
+      content: t('sections.yourRights.content')
     },
     {
-      title: "Cookies",
-      content: "We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      title: t('sections.cookies.title'),
+      content: t('sections.cookies.content')
     },
     {
-      title: "Changes to This Policy",
-      content: "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the 'Last Updated' date."
+      title: t('sections.policyChanges.title'),
+      content: t('sections.policyChanges.content')
     },
     {
-      title: "Contact Us",
-      content: "If you have any questions about this Privacy Policy, please contact us at kamantalhaa@gmail.com"
+      title: t('sections.contactUs.title'),
+      content: t('sections.contactUs.content')
     }
   ];
 
@@ -74,10 +82,10 @@ export default function Privacy() {
               <ShieldCheckIcon className="w-12 h-12 text-blue-400" />
             </div>
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              Privacy Policy
+              {t('title')}
             </h1>
             <p className="transition-colors duration-300" style={{ color: 'var(--text-primary)' }}>
-              Last Updated: April 2, 2025
+              {t('lastUpdated')}
             </p>
           </motion.div>
 

@@ -6,8 +6,8 @@
 export const siteConfig = {
   // Site information
   name: "Talha Kaman Portfolio",
-  title: "Talha Kaman | Frontend Developer",
-  description: "Portfolio of Talha Kaman, a passionate Frontend Developer specializing in React, Next.js, and modern web technologies",
+  title: "Talha Kaman | Software Developer",
+  description: "Portfolio of Talha Kaman, a passionate Software Developer specializing in React, Next.js, and modern web technologies",
   
   // URLs
   url: "https://talhakaman.com",
@@ -16,8 +16,8 @@ export const siteConfig = {
   // Author information
   author: {
     name: "Mustafa Talha Kaman",
-    jobTitle: "Frontend Developer",
-    email: "info@talhakaman.com",
+    jobTitle: "Software Developer",
+    email: "kamantalhaa2@gmail.com",
     github: "https://github.com/Talafranga",
     linkedin: "https://www.linkedin.com/in/talha-kaman/",
     leetcode: "https://leetcode.com/u/talafranga/"

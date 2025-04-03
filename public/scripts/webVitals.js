@@ -89,7 +89,14 @@ export function optimizeWebVitals() {
       }
       
       // Add loading complete class to enable animations
-      document.documentElement.classList.add('page-loaded');
+      // Using requestAnimationFrame to ensure React hydration is complete
+      window.requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (!document.documentElement.classList.contains('page-loaded')) {
+            document.documentElement.classList.add('page-loaded');
+          }
+        }, 500); // 500ms delay to ensure React hydration is complete
+      });
     });
     
     // Monitor performance
