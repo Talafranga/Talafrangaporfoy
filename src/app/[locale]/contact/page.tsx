@@ -9,9 +9,8 @@ export function generateStaticParams() {
 }
 
 export default async function Contact({ params }: { params: { locale: string } }) {
-  // Properly await params before accessing them
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
+  // Use params directly
+  const locale = params.locale;
   
   // Enable static rendering
   setRequestLocale(locale);
@@ -30,7 +29,14 @@ export default async function Contact({ params }: { params: { locale: string } }
       message: contactT('message'),
       send: contactT('send'),
       phone: contactT('phone'),
-      subject: contactT('subject')
+      subject: contactT('subject'),
+      getInTouch: contactT('getInTouch'),
+      emailLabel: contactT('emailLabel'),
+      location: contactT('location'),
+      followMe: contactT('followMe'),
+      success: contactT('success'),
+      error: contactT('error'),
+      sending: contactT('sending')
     },
     loading: "Loading..." // Use direct text instead of common namespace
   };
