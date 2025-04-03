@@ -14,8 +14,9 @@ export function generateStaticParams() {
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  // Use params directly
-  const locale = params.locale;
+  // Make sure params is properly awaited
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale;
   const baseDomain = new URL(siteConfig.url);
 
   return {
@@ -84,8 +85,9 @@ export const viewport: Viewport = {
 
 // HTML Attributes
 export async function generateHtmlAttributes({ params }: { params: { locale: string } }) {
+  const resolvedParams = await Promise.resolve(params);
   return {
-    lang: params.locale
+    lang: resolvedParams.locale
   };
 }
 
@@ -96,8 +98,9 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: any;
 }) {
-  // Use locale directly
-  const locale = params.locale;
+  // Ensure that the incoming `locale` is valid
+  const resolvedParams = await Promise.resolve(params);
+  const locale = resolvedParams.locale;
   
   if (!hasLocale(routing.locales, locale)) {
     notFound();
