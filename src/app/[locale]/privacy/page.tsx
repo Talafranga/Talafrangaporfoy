@@ -6,10 +6,8 @@ import PrivacyPage from './PrivacyPage';
 // Added Edge Runtime declaration for Cloudflare Pages
 export const runtime = 'edge';
 
-// Generate static params for build-time rendering
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+// Allow dynamic locale params
+export const dynamicParams = true;
 
 export default async function Privacy({ params }: { params: Promise<{ locale: string }> }) {
   // Resolve params properly

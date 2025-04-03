@@ -11,15 +11,8 @@ import { Metadata } from 'next';
 // Added Edge Runtime declaration for Cloudflare Pages
 export const runtime = 'edge';
 
-// Generate static params for build-time rendering of all blog posts
-export function generateStaticParams() {
-  return blogPosts.flatMap(post => {
-    return routing.locales.map(locale => ({ 
-      locale, 
-      slug: post.id 
-    }));
-  });
-}
+// Allow dynamic params for slug and locale
+export const dynamicParams = true;
 
 // Export metadata for SEO
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {

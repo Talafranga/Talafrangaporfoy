@@ -10,10 +10,8 @@ import { setRequestLocale } from 'next-intl/server';
 // Added Edge Runtime declaration for Cloudflare Pages
 export const runtime = 'edge';
 
-// Generate static params for build-time rendering
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+// Allow dynamic locale params
+export const dynamicParams = true;
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

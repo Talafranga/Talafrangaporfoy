@@ -6,10 +6,8 @@ import BlogPage from './BlogPage';
 // Added Edge Runtime declaration for Cloudflare Pages
 export const runtime = 'edge';
 
-// Generate static params for build-time rendering
-export function generateStaticParams() {
-  return routing.locales.map((locale: string) => ({ locale }));
-}
+// Allow dynamic locale params
+export const dynamicParams = true;
 
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
   // Properly await params before accessing them
