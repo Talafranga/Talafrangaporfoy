@@ -8,8 +8,10 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function Privacy({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function Privacy({ params }: { params: Promise<{ locale: string }> }) {
+  // Resolve params properly
+  const resolvedParams = await params;
+  const locale = resolvedParams.locale;
   
   // Enable static rendering
   setRequestLocale(locale);

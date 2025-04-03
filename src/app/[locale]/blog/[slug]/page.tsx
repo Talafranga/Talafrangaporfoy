@@ -19,8 +19,10 @@ export function generateStaticParams() {
 }
 
 // Export metadata for SEO
-export async function generateMetadata({ params }: { params: { slug: string, locale: string } }): Promise<Metadata> {
-  const { slug, locale } = params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
+  // Properly await params before using them
+  const resolvedParams = await params;
+  const { slug, locale } = resolvedParams;
   
   const post = blogPosts.find(post => post.id === slug);
   
@@ -43,8 +45,10 @@ export async function generateMetadata({ params }: { params: { slug: string, loc
   };
 }
 
-export default async function BlogPost({ params }: { params: { slug: string, locale: string } }) {
-  const { slug, locale } = params;
+export default async function BlogPost({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+  // Properly await params before using them
+  const resolvedParams = await params;
+  const { slug, locale } = resolvedParams;
   
   // Enable static rendering
   setRequestLocale(locale);
