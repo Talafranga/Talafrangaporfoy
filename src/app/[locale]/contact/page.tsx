@@ -3,6 +3,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import ContactPage from './ContactPage';
 
+// Added Edge Runtime declaration for Cloudflare Pages
+export const runtime = 'edge';
+
 // Generate static params for build-time rendering
 export function generateStaticParams() {
   return routing.locales.map((locale: string) => ({ locale }));

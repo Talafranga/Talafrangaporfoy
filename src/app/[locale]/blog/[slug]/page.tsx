@@ -8,6 +8,9 @@ import OptimizedImage from '@/app/components/OptimizedImage';
 import Header from '@/app/components/Header';
 import { Metadata } from 'next';
 
+// Added Edge Runtime declaration for Cloudflare Pages
+export const runtime = 'edge';
+
 // Generate static params for build-time rendering of all blog posts
 export function generateStaticParams() {
   return blogPosts.flatMap(post => {

@@ -7,6 +7,9 @@ import BrowserDetection from '../components/BrowserDetection';
 import type { Metadata, Viewport } from "next";
 import { setRequestLocale } from 'next-intl/server';
 
+// Added Edge Runtime declaration for Cloudflare Pages
+export const runtime = 'edge';
+
 // Generate static params for build-time rendering
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
