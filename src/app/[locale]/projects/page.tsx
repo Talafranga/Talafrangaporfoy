@@ -9,9 +9,7 @@ export function generateStaticParams() {
 }
 
 export default async function Projects({ params }: { params: { locale: string } }) {
-  // Properly await params before accessing them
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
+  const { locale } = params;
   
   // Enable static rendering
   setRequestLocale(locale);

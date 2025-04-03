@@ -9,9 +9,7 @@ export function generateStaticParams() {
 }
 
 export default async function Privacy({ params }: { params: { locale: string } }) {
-  // Resolve params properly
-  const resolvedParams = await Promise.resolve(params);
-  const locale = resolvedParams.locale;
+  const { locale } = params;
   
   // Enable static rendering
   setRequestLocale(locale);
