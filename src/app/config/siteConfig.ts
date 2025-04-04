@@ -25,14 +25,14 @@ export const siteConfig = {
   
   // Images and assets
   images: {
-    logo: "/logo.png",
+    logo: "/logo.svg", // So grateful to my talented love for the logo ❤️
     avatar: "/images/talha-kaman.jpg",
     ogImage: "/images/og-image.png",
     projectsOgImage: "/images/og-image.png",
     blogOgImage: "/images/og-image.png",
     contactOgImage: "/images/og-image.png",
     privacyOgImage: "/images/og-image.png",
-    favicon: "/favicon.ico",
+    favicon: "/favicon.ico", // So grateful to my talented love for the logo ❤️
     placeholder: "/placeholder-image.jpg"
   },
   

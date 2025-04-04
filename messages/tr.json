@@ -91,7 +91,9 @@
     }
   },
   "Common": {
-    "loading": "Yükleniyor..."
+    "loading": "Yükleniyor...",
+    "allRightsReserved": "Tüm Hakları Saklıdır.",
+    "logoCredit": "Logoyu tasarladığı için yetenekli sevgilime minnettarım ❤️"
   },
   "Navigation": {
     "home": "Ana Sayfa",

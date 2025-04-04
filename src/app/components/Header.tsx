@@ -19,6 +19,7 @@ export default function Header() {
   const pathname = usePathname();
   const { theme } = useTheme();
   const t = useTranslations('Navigation');
+  const commonT = useTranslations('Common');
   // Get the current locale from params
   const params = useParams();
   const currentLocale = (params?.locale as string) || 'en';
@@ -81,8 +82,18 @@ export default function Header() {
     return (
       <header className={`${baseHeaderClassName} bg-black/60`}>
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Talha Kaman
+          <Link 
+            href="/" 
+            className="flex items-center group relative"
+          >
+            <img 
+              src="/logo.svg"
+              alt="Talha Kaman"
+              className="h-10 w-auto"
+            />
+            <span className="absolute -bottom-8 left-0 text-sm px-2 py-1 bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+              {commonT('logoCredit')}
+            </span>
           </Link>
           <div className="w-10 h-10"></div>
         </div>
@@ -113,8 +124,18 @@ export default function Header() {
     <header className={headerClassName}>
       <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link href="/" className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          Talha Kaman
+        <Link 
+          href="/" 
+          className="flex items-center group relative"
+        >
+          <img 
+            src="/logo.svg"
+            alt="Talha Kaman"
+            className="h-10 w-auto"
+          />
+          <span className="absolute -bottom-8 left-0 text-sm px-2 py-1 bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            {commonT('logoCredit')}
+          </span>
         </Link>
 
         {/* Desktop Navigation */}

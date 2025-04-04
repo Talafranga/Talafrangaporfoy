@@ -91,7 +91,9 @@
     }
   },
   "Common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "allRightsReserved": "All Rights Reserved.",
+    "logoCredit": "So grateful to my talented love for the logo ❤️"
   },
   "Navigation": {
     "home": "Home",
