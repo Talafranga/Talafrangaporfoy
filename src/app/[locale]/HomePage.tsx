@@ -97,7 +97,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500"
           >
             {t.title}
           </motion.h1>

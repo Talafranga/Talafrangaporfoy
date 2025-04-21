@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="js-loading">
+    <html className="js-loading" lang="tr">
       <head>
         <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />

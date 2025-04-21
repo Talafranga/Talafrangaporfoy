@@ -87,7 +87,7 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent pb-2 leading-normal"
+            className="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 pb-2 leading-normal"
           >
             {t.title}
           </motion.h1>
