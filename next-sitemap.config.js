@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 
 // Cannot directly import from src/app/config, so we define the URL here
-const SITE_URL = 'https://talha-kaman.com';
+const SITE_URL = 'https://www.talhakaman.com';
 
 module.exports = {
   siteUrl: SITE_URL,

@@ -1,4 +1,4 @@
-# robots.txt for https://talha-kaman.com
+# robots.txt for https://www.talhakaman.com
 
 User-agent: *
 Allow: /
@@ -7,4 +7,4 @@ Allow: /
 Disallow: /privacy
 
 # Sitemap
-Sitemap: https://talha-kaman.com/sitemap.xml 
+Sitemap: https://www.talhakaman.com/sitemap.xml 

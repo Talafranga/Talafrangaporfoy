@@ -10,8 +10,8 @@ export const siteConfig = {
   description: "Portfolio of Talha Kaman, a passionate Software Developer specializing in React, Next.js, and modern web technologies",
   
   // URLs
-  url: "https://talhakaman.com",
-  baseUrl: "https://talhakaman.com",
+  url: "https://www.talhakaman.com",
+  baseUrl: "https://www.talhakaman.com",
   
   // Author information
   author: {
