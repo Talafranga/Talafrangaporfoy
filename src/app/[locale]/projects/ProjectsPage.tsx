@@ -15,6 +15,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  video?: string;
   technologies: string[];
   liveDemo?: string;
   github?: string;
@@ -101,18 +102,29 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-xl overflow-hidden border backdrop-blur-sm transition-all duration-300 hover-scale hover-glow"
+                className="rounded-xl overflow-hidden border backdrop-blur-sm transition-all duration-300 hover-scale hover-glow h-[600px] flex flex-col"
                 style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
               >
                 <div className="h-52 overflow-hidden bg-gray-800 relative group">
-                  <OptimizedImage 
-                    src={project.image} 
-                    alt={project.localizations?.[locale]?.title || project.title} 
-                    width={600}
-                    height={400}
-                    objectFit="cover"
-                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                  />
+                  {project.video ? (
+                    <video 
+                      src={project.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    />
+                  ) : (
+                    <OptimizedImage 
+                      src={project.image} 
+                      alt={project.localizations?.[locale]?.title || project.title} 
+                      width={600}
+                      height={400}
+                      objectFit="cover"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    />
+                  )}
                   {project.liveDemo && (
                     <a 
                       href={project.liveDemo}
@@ -124,12 +136,12 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
                     </a>
                   )}
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-semibold mb-3 transition-colors duration-300"
                     style={{ color: 'var(--text-primary)' }}>
                     {project.localizations?.[locale]?.title || project.title}
                   </h3>
-                  <p className="mb-4 transition-colors duration-300"
+                  <p className="mb-4 transition-colors duration-300 flex-grow"
                     style={{ color: 'var(--text-primary)' }}>
                     {project.localizations?.[locale]?.description || project.description}
                   </p>
@@ -145,7 +157,7 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
                     ))}
                   </div>
                   
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-3 mt-auto">
                     {project.liveDemo && (
                       <a 
                         href={project.liveDemo} 

@@ -50,8 +50,7 @@ export default function BrowserDetection() {
       // Bağlantı hızı tespiti - opsiyonel, destekleyen tarayıcılarda çalışır
       if ('connection' in navigator) {
         try {
-          // @ts-ignore - TypeScript bu özelliği tanımıyor olabilir
-          const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+          const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
           if (connection && connection.effectiveType) {
             const connectionType = `connection-${connection.effectiveType}`;
             document.documentElement.classList.add(connectionType);

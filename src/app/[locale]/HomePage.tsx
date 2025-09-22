@@ -40,6 +40,9 @@ interface AboutTranslations {
 interface ProjectsTranslations {
   title: string;
   viewProject: string;
+  viewLiveDemo: string;
+  liveDemo: string;
+  github: string;
 }
 
 interface BlogTranslations {
@@ -204,58 +207,106 @@ export default function HomePage({ locale, translations }: HomePageProps) {
           </motion.h2>
           
           {/* Featured Projects Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="rounded-xl overflow-hidden hover-scale hover-glow backdrop-blur-sm transition-all duration-300"
+                className="rounded-xl overflow-hidden border backdrop-blur-sm transition-all duration-300 hover-scale hover-glow h-[600px] flex flex-col"
                 style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
               >
-                <Link href={`projects#${project.id}`} className="block h-full">
-                  <div className="h-64 overflow-hidden">
+                <div className="h-52 overflow-hidden bg-gray-800 relative group">
+                  {project.video ? (
+                    <video 
+                      src={project.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    />
+                  ) : (
                     <OptimizedImage 
                       src={project.image} 
                       alt={project.localizations?.[locale]?.title || project.title} 
                       width={600}
                       height={400}
                       objectFit="cover"
-                      objectPosition="top"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-4">
-                      <CodeBracketIcon className="w-5 h-5 text-blue-400" />
-                      <h3 className="text-xl font-semibold"
-                        style={{ color: 'var(--text-primary)' }}>
-                        {project.localizations?.[locale]?.title || project.title}
-                      </h3>
-                    </div>
-                    <p className="mb-6 transition-colors duration-300"
-                      style={{ color: 'var(--text-primary)' }}>
-                      {project.localizations?.[locale]?.description || project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map(tech => (
-                        <span 
-                          key={tech} 
-                          className="px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-400"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <span 
-                      className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                  )}
+                  {project.liveDemo && (
+                    <a 
+                      href={project.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 bg-black bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
-                      {projectsT.viewProject} <ArrowRightIcon className="w-4 h-4 ml-2" />
-                    </span>
+                      <span className="px-4 py-2 bg-blue-600 text-white rounded-lg">{projectsT.viewLiveDemo}</span>
+                    </a>
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold mb-3 transition-colors duration-300"
+                    style={{ color: 'var(--text-primary)' }}>
+                    {project.localizations?.[locale]?.title || project.title}
+                  </h3>
+                  <p className="mb-4 transition-colors duration-300 flex-grow"
+                    style={{ color: 'var(--text-primary)' }}>
+                    {project.localizations?.[locale]?.description || project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span 
+                        key={tech} 
+                        className="px-3 py-1 rounded-full text-sm font-medium bg-blue-500/20 text-blue-400"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-                </Link>
+                  
+                  <div className="flex space-x-3 mt-auto">
+                    {project.liveDemo && (
+                      <a 
+                        href={project.liveDemo} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300"
+                      >
+                        <span>{projectsT.liveDemo}</span>
+                      </a>
+                    )}
+                    {project.github && (
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center px-4 py-2 rounded-lg transition-all duration-300 hover:bg-opacity-80"
+                        style={{ 
+                          backgroundColor: theme === 'light' ? 'rgba(17, 24, 39, 0.8)' : 'var(--bg-primary)', 
+                          color: theme === 'light' ? '#ffffff' : 'var(--text-primary)',
+                          transform: 'translateY(0)',
+                        }}
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = 'translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = 'translateY(0)';
+                          e.currentTarget.style.boxShadow = 'none';
+                        }}
+                      >
+                        <CodeBracketIcon className="h-4 w-4 mr-2" />
+                        <span>{projectsT.github}</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

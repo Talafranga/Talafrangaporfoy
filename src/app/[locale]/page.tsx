@@ -39,7 +39,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     },
     projects: {
       title: projectsT('title'),
-      viewProject: projectsT('viewProject')
+      viewProject: projectsT('viewProject'),
+      viewLiveDemo: projectsT('viewLiveDemo'),
+      liveDemo: projectsT('liveDemo'),
+      github: projectsT('github')
     },
     blog: {
       title: blogT('title'),
