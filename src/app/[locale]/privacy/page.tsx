@@ -1,6 +1,4 @@
 import { setRequestLocale } from 'next-intl/server';
-import { getTranslations } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
 import PrivacyPage from './PrivacyPage';
 
 // Added Edge Runtime declaration for Cloudflare Pages
@@ -18,8 +16,6 @@ export default async function Privacy({ params }: { params: Promise<{ locale: st
   setRequestLocale(locale);
   
   return (
-    <PrivacyPage 
-      locale={locale} 
-    />
+    <PrivacyPage />
   );
 } 

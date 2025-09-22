@@ -8,9 +8,9 @@ import ThemeToggle from './ThemeToggle';
 import LanguageSwitcher from './LanguageSwitcher';
 import { navigationItems } from '../constants/navigation';
 import { useTheme } from '../context/ThemeContext';
+import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { useParams } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,6 @@ export default function Header() {
   const { theme } = useTheme();
   const t = useTranslations('Navigation');
   const commonT = useTranslations('Common');
-  // Get the current locale from params
-  const params = useParams();
-  const currentLocale = (params?.locale as string) || 'en';
   
   useEffect(() => {
     setMounted(true);
@@ -86,9 +83,11 @@ export default function Header() {
             href="/" 
             className="flex items-center group relative"
           >
-            <img 
+            <Image 
               src="/logo.svg"
               alt="Talha Kaman"
+              width={40}
+              height={40}
               className="h-10 w-auto"
             />
             <span className="absolute -bottom-8 left-0 text-sm px-2 py-1 bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
@@ -128,9 +127,11 @@ export default function Header() {
           href="/" 
           className="flex items-center group relative"
         >
-          <img 
+          <Image 
             src="/logo.svg"
             alt="Talha Kaman"
+            width={40}
+            height={40}
             className="h-10 w-auto"
           />
           <span className="absolute -bottom-8 left-0 text-sm px-2 py-1 bg-gray-800 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">

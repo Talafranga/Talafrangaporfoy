@@ -1,6 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
 import ContactPage from './ContactPage';
 
 // Added Edge Runtime declaration for Cloudflare Pages
@@ -45,7 +44,6 @@ export default async function Contact({ params }: { params: Promise<{ locale: st
 
   return (
     <ContactPage 
-      locale={locale} 
       translations={translations}
     />
   );

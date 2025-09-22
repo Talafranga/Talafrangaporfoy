@@ -19,10 +19,8 @@ const ThemeContext = createContext<ThemeContextType>(defaultContextValue);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     try {
       // Check if a theme preference is stored in localStorage
       const storedTheme = localStorage.getItem('theme') as Theme | null;

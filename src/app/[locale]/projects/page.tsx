@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import ProjectsPage from './ProjectsPage';
-import { routing } from '@/i18n/routing';
 
 // Added Edge Runtime declaration for Cloudflare Pages
 export const runtime = 'edge';

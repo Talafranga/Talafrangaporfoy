@@ -57,6 +57,7 @@ export default function OptimizedImage({
   // If src is external or there's an error, use the regular img tag
   if (isExternal || imageError) {
     return (
+      // eslint-disable-next-line @next/next/no-img-element
       <img
         src={imageError ? fallbackImage : src}
         alt={alt}

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { CalendarIcon, ClockIcon, TagIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import Header from '../../components/Header';
 import { blogPosts } from '../../constants/blogPosts';
-import { useTheme } from '../../context/ThemeContext';
 import { useState, useEffect } from 'react';
 import OptimizedImage from '../../components/OptimizedImage';
 import { Link } from '@/i18n/navigation';
@@ -26,7 +25,6 @@ interface BlogPageProps {
 }
 
 export default function BlogPage({ locale, translations }: BlogPageProps) {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   
   const t = translations.blog;

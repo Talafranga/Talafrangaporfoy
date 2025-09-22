@@ -2,13 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { useTheme } from './context/ThemeContext';
 import Link from 'next/link';
-import { siteConfig } from './config/siteConfig';
 
 export default function NotFound() {
   const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -49,7 +46,7 @@ export default function NotFound() {
           className="text-xl mb-12 max-w-lg mx-auto transition-colors duration-300"
           style={{ color: 'var(--text-primary)' }}
         >
-          The page you're looking for doesn't exist or has been moved.
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

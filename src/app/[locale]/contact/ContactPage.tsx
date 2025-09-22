@@ -44,7 +44,7 @@ interface ContactPageProps {
   translations: TranslationsProps;
 }
 
-export default function ContactPage({ locale, translations }: ContactPageProps) {
+export default function ContactPage({ translations }: Omit<ContactPageProps, 'locale'>) {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [name, setName] = useState('');

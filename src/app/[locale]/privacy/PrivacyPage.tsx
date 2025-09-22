@@ -4,15 +4,9 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 import Header from '../../components/Header';
-import { useTheme } from '../../context/ThemeContext';
 import { useTranslations } from 'next-intl';
 
-interface PrivacyPageProps {
-  locale: string;
-}
-
-export default function PrivacyPage({ locale }: PrivacyPageProps) {
-  const { theme } = useTheme();
+export default function PrivacyPage() {
   const [mounted, setMounted] = useState(false);
   const t = useTranslations('Privacy');
   const commonT = useTranslations('Common');

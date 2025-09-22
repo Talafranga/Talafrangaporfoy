@@ -50,7 +50,15 @@ export default function BrowserDetection() {
       // Bağlantı hızı tespiti - opsiyonel, destekleyen tarayıcılarda çalışır
       if ('connection' in navigator) {
         try {
-          const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
+          // Network Information API interface tanımı
+          interface NavigatorWithConnection extends Navigator {
+            connection?: { effectiveType?: string };
+            mozConnection?: { effectiveType?: string };
+            webkitConnection?: { effectiveType?: string };
+          }
+          
+          const nav = navigator as NavigatorWithConnection;
+          const connection = nav.connection || nav.mozConnection || nav.webkitConnection;
           if (connection && connection.effectiveType) {
             const connectionType = `connection-${connection.effectiveType}`;
             document.documentElement.classList.add(connectionType);

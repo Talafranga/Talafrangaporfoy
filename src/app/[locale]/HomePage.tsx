@@ -3,9 +3,6 @@
 import { motion } from 'framer-motion';
 import { 
   CodeBracketIcon,
-  CommandLineIcon,
-  CpuChipIcon,
-  PaintBrushIcon,
   CalendarIcon,
   ClockIcon,
   TagIcon,
@@ -15,7 +12,6 @@ import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import { blogPosts } from '../constants/blogPosts';
 import { getFeaturedProjects } from '../constants/projects';
-import type { Project } from '../constants/projects';
 import { useTheme } from '../context/ThemeContext';
 import HomeStructuredData from '../home/StructuredData';
 import { siteConfig } from '../config/siteConfig';

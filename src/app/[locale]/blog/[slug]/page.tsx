@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
 import { blogPosts } from '@/app/constants/blogPosts';
 import { CalendarIcon, ClockIcon, TagIcon } from '@heroicons/react/24/outline';
 import OptimizedImage from '@/app/components/OptimizedImage';

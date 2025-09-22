@@ -5,9 +5,9 @@ import { getTranslations } from 'next-intl/server';
 export const generateMetadata = async ({ params }: { params: { locale: string } }): Promise<Metadata> => {
   const locale = params.locale;
   
-  // Get translation function
-  const t = await getTranslations('Privacy');
-  const metadata = await getTranslations('Metadata');
+  // Get translation function for future use if needed
+  await getTranslations('Privacy');
+  await getTranslations('Metadata');
 
   return {
     title: `${locale === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'} | ${siteConfig.author.name}`,
