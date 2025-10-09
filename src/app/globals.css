@@ -154,6 +154,30 @@ html.js-loading * {
   transition: none !important;
 }
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* GPU acceleration for animations */
+.hover-scale,
+.hover-glow,
+.theme-icon {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Optimize repaints */
+.transition-colors {
+  will-change: background-color, color, border-color;
+}
+
+/* Contain layout shifts */
+.container {
+  contain: layout style paint;
+}
+
+
 /* Optimize Content Layout Shift (CLS) */
 img, video, iframe {
   aspect-ratio: attr(width) / attr(height);

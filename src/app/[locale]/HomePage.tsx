@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { 
   CodeBracketIcon,
   CalendarIcon,
@@ -83,8 +83,9 @@ export default function HomePage({ locale, translations }: HomePageProps) {
   }
 
   return (
-    <main className="min-h-screen text-white transition-colors duration-300">
-      <Header />
+    <LazyMotion features={domAnimation}>
+      <main className="min-h-screen text-white transition-colors duration-300">
+        <Header />
       
       {/* Structured Data for SEO */}
       <HomeStructuredData />
@@ -93,17 +94,17 @@ export default function HomePage({ locale, translations }: HomePageProps) {
       <section id="hero" className="min-h-screen flex items-center justify-center relative pt-16">
         <div className="text-center relative z-10">
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
             className="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
           >
             {t.title}
           </motion.h1>
           <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
             className="text-2xl mb-12 transition-colors duration-300"
             style={{ color: 'var(--text-primary)' }}
           >
@@ -215,25 +216,15 @@ export default function HomePage({ locale, translations }: HomePageProps) {
                 style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
               >
                 <div className="h-52 overflow-hidden bg-gray-800 relative group">
-                  {project.video ? (
-                    <video 
-                      src={project.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                    />
-                  ) : (
-                    <OptimizedImage 
-                      src={project.image} 
-                      alt={project.localizations?.[locale]?.title || project.title} 
-                      width={600}
-                      height={400}
-                      objectFit="cover"
-                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-                    />
-                  )}
+                  <OptimizedImage 
+                    src={project.image} 
+                    alt={project.localizations?.[locale]?.title || project.title} 
+                    width={600}
+                    height={400}
+                    objectFit="cover"
+                    priority={index === 0}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                  />
                   {project.liveDemo && (
                     <a 
                       href={project.liveDemo}
@@ -401,5 +392,6 @@ export default function HomePage({ locale, translations }: HomePageProps) {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 } 

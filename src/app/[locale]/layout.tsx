@@ -4,7 +4,6 @@ import { routing } from '@/i18n/routing';
 import { ThemeProvider } from "../context/ThemeContext";
 import { siteConfig } from "../config/siteConfig";
 import BrowserDetection from '../components/BrowserDetection';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import type { Metadata, Viewport } from "next";
 import { setRequestLocale } from 'next-intl/server';
@@ -142,7 +141,6 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <BrowserDetection />
           <div className="flex flex-col min-h-screen">
-            <Header />
             <main className="flex-grow">
               {children}
             </main>
