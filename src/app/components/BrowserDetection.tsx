@@ -4,13 +4,9 @@ import { useEffect } from 'react';
 
 export default function BrowserDetection() {
   useEffect(() => {
-    // Tarayıcı ve bağlantı hızı tespiti sadece istemci tarafında yapılıyor
+    // Client-side browser and connection detection
     try {
-      // Mevcut sınıfları koruduğumuzdan emin oluyoruz
-      // BrowserDetection bileşeni mount olduktan sonra document.documentElement'e
-      // sınıfları ekliyoruz ama hiçbir zaman className'i tamamen değiştirmiyoruz
-      
-      // Tarayıcı tespiti
+      // Browser detection
       const isChrome = navigator.userAgent.indexOf('Chrome') > -1;
       const isSafari = navigator.userAgent.indexOf('Safari') > -1 && !isChrome;
       const browserClass = isChrome ? 'is-chrome' : isSafari ? 'is-safari' : 'is-other-browser';
@@ -19,38 +15,33 @@ export default function BrowserDetection() {
         document.documentElement.classList.add(browserClass);
       }
       
-      // "js-loading" sınıfını kaldırmak için bir fonksiyon
+      // Remove loading class
       const removeLoadingClass = () => {
-        // İlk olarak js-loading sınıfını kaldır
         document.documentElement.classList.remove('js-loading');
       };
       
-      // page-loaded sınıfını eklemek için ayrı bir fonksiyon
+      // Add page loaded class after hydration
       const addPageLoadedClass = () => {
-        // React hydration tamamlandıktan sonra page-loaded sınıfını ekle
         if (!document.documentElement.classList.contains('page-loaded')) {
           document.documentElement.classList.add('page-loaded');
         }
       };
       
-      // İlk olarak yükleme sınıfını kaldır - bunu hemen yapabiliriz
+      // Remove loading class immediately
       if (document.readyState === 'loading') {
         window.addEventListener('DOMContentLoaded', removeLoadingClass);
       } else {
         removeLoadingClass();
       }
       
-      // page-loaded sınıfını daha sonra ekle, hydration tamamlandıktan sonra
-      // requestAnimationFrame kullanarak tarayıcının render döngüsünü bekleriz
-      // ve setTimeout ile daha da ertelemiş oluruz
+      // Add page-loaded class after hydration with delay
       window.requestAnimationFrame(() => {
-        setTimeout(addPageLoadedClass, 300); // 300ms gecikmeyle ekle
+        setTimeout(addPageLoadedClass, 300);
       });
       
-      // Bağlantı hızı tespiti - opsiyonel, destekleyen tarayıcılarda çalışır
+      // Connection speed detection (optional)
       if ('connection' in navigator) {
         try {
-          // Network Information API interface tanımı
           interface NavigatorWithConnection extends Navigator {
             connection?: { effectiveType?: string };
             mozConnection?: { effectiveType?: string };
@@ -72,6 +63,5 @@ export default function BrowserDetection() {
     }
   }, []);
   
-  // Bileşen görsel olarak hiçbir şey render etmiyor
   return null;
 } 

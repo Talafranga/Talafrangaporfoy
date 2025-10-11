@@ -13,7 +13,7 @@ const LanguageSwitcher = () => {
   const [isPending, startTransition] = useTransition();
   const { theme } = useTheme();
   
-  // Get locale with fallback to default
+  // Get current locale with fallback
   const currentLocale = (params?.locale as string) || 'en';
   // Get target locale (opposite of current)
   const targetLocale = currentLocale === 'en' ? 'tr' : 'en';
@@ -24,7 +24,7 @@ const LanguageSwitcher = () => {
     });
   };
 
-  // Decide button styles based on theme
+  // Button styles based on theme
   const buttonBackground = theme === 'light' ? 'bg-blue-100 hover:bg-blue-200' : 'bg-blue-500/10 hover:bg-blue-500/20';
   const buttonBorder = theme === 'light' ? 'border-blue-300' : 'border-blue-400/30';
   const buttonTextColor = theme === 'light' ? 'text-blue-600' : 'text-blue-400';

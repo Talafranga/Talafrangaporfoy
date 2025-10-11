@@ -2,24 +2,24 @@ import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import BlogPage from './BlogPage';
 
-// Added Edge Runtime declaration for Cloudflare Pages
-export const runtime = 'edge';
+// Generate static params for supported locales
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'tr' }];
+}
 
 // Allow dynamic locale params
 export const dynamicParams = true;
 
 export default async function Blog({ params }: { params: Promise<{ locale: string }> }) {
-  // Properly await params before accessing them
+  // Await params before accessing
   const resolvedParams = await params;
   const locale = resolvedParams.locale;
   
   // Enable static rendering
   setRequestLocale(locale);
   
-  // Get translation functions
+  // Get translations
   const t = await getTranslations('Blog');
-
-  // Remove Common namespace reference and use direct string
   const translations = {
     blog: {
       title: t('title'),

@@ -68,7 +68,7 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
     <main className="min-h-screen transition-colors duration-300">
       <Header />
       
-      {/* Structured Data for SEO */}
+      {/* SEO structured data */}
       {projects.map((project) => (
         <ProjectStructuredData
           key={project.id}
@@ -81,7 +81,7 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
         />
       ))}
 
-      {/* Projects Section */}
+      {/* Projects section */}
       <section className="py-20 px-4 pt-32">
         <div className="max-w-7xl mx-auto">
           <motion.h1 
@@ -93,7 +93,7 @@ export default function ProjectsPage({ locale, translations }: ProjectsPageProps
             {t.title}
           </motion.h1>
           
-          {/* Projects Grid */}
+          {/* Projects grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project: Project, index: number) => (
               <motion.div

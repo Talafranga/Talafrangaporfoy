@@ -23,7 +23,7 @@ export default function PrivacyPage() {
     );
   }
   
-  // Define sections based on translations
+  // Define privacy sections
   const sections = [
     {
       title: t('sections.informationCollect.title'),
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
     <main className="min-h-screen transition-colors duration-300">
       <Header />
 
-      {/* Privacy Section */}
+      {/* Privacy section */}
       <section className="py-20 px-4 pt-32">
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -83,7 +83,7 @@ export default function PrivacyPage() {
             </p>
           </motion.div>
 
-          {/* Privacy Content */}
+          {/* Privacy content */}
           <div className="space-y-8">
             {sections.map((section, index) => (
               <motion.div

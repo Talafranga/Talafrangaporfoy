@@ -18,7 +18,7 @@ import { siteConfig } from '../config/siteConfig';
 import OptimizedImage from '../components/OptimizedImage';
 import { Link } from '@/i18n/navigation';
 
-// Interfaces for props
+// Component interfaces
 interface HomePageTranslations {
   title: string;
   jobTitle: string;
@@ -87,10 +87,10 @@ export default function HomePage({ locale, translations }: HomePageProps) {
       <main className="min-h-screen text-white transition-colors duration-300">
         <Header />
       
-      {/* Structured Data for SEO */}
+      {/* SEO structured data */}
       <HomeStructuredData />
       
-      {/* Hero Section */}
+      {/* Hero section */}
       <section id="hero" className="min-h-screen flex items-center justify-center relative pt-16">
         <div className="text-center relative z-10">
           <motion.h1 
@@ -165,7 +165,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About section */}
       <section id="about" className="min-h-screen flex items-center justify-center relative">
         <div className="max-w-4xl mx-auto px-4">
           <motion.h2 
@@ -190,7 +190,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects section */}
       <section id="featured-projects" className="min-h-screen py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2 
@@ -203,7 +203,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
             {projectsT.title}
           </motion.h2>
           
-          {/* Featured Projects Cards */}
+          {/* Featured projects grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
               <motion.div
@@ -310,7 +310,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
         </div>
       </section>
 
-      {/* Blog Section */}
+      {/* Blog section */}
       <section id="latest-blog" className="min-h-screen py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
           <motion.h2 
@@ -323,7 +323,7 @@ export default function HomePage({ locale, translations }: HomePageProps) {
             {blogT.title}
           </motion.h2>
           
-          {/* Blog Posts */}
+          {/* Blog posts grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {latestBlogPosts.map((post, index) => (
               <motion.article

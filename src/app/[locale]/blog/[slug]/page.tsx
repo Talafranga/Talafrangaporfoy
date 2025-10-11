@@ -7,8 +7,19 @@ import OptimizedImage from '@/app/components/OptimizedImage';
 import Header from '@/app/components/Header';
 import { Metadata } from 'next';
 
-// Added Edge Runtime declaration for Cloudflare Pages
-export const runtime = 'edge';
+// Generate static params for all blog posts and locales
+export async function generateStaticParams() {
+  const locales = ['en', 'tr'];
+  const params = [];
+  
+  for (const locale of locales) {
+    for (const post of blogPosts) {
+      params.push({ locale, slug: post.id });
+    }
+  }
+  
+  return params;
+}
 
 // Allow dynamic params for slug and locale
 export const dynamicParams = true;

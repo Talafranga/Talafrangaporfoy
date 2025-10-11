@@ -20,17 +20,7 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
   
-  // Bundle analyzer (disable in production)
-  ...(process.env.ANALYZE === 'true' && {
-    webpack: (config: any) => {
-      config.plugins.push(
-        new (require('@next/bundle-analyzer')())({
-          enabled: true,
-        })
-      );
-      return config;
-    },
-  }),
+  // Bundle analyzer disabled for production stability
   
   // Headers for caching
   async headers() {

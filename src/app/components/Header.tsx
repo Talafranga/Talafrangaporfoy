@@ -108,14 +108,13 @@ export default function Header() {
   // Get localized navigation items
   const localizedNavItems = navigationItems.map(item => {
     try {
-      // Use Link from next-intl/navigation which already handles locale prefixing correctly
       return {
         ...item,
         label: t(item.key)
       };
     } catch (error) {
       console.error(`Translation error for key: ${item.key}`, error);
-      return item; // Fallback to default label
+      return item;
     }
   });
 

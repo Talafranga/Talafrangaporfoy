@@ -2,8 +2,10 @@ import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import ContactPage from './ContactPage';
 
-// Added Edge Runtime declaration for Cloudflare Pages
-export const runtime = 'edge';
+// Generate static params for all supported locales
+export async function generateStaticParams() {
+  return [{ locale: 'en' }, { locale: 'tr' }];
+}
 
 // Allow dynamic locale params
 export const dynamicParams = true;

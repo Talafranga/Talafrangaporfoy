@@ -46,7 +46,7 @@ export default function BlogPage({ locale, translations }: BlogPageProps) {
     <main className="min-h-screen transition-colors duration-300">
       <Header />
 
-      {/* Blog Section */}
+      {/* Blog section */}
       <section className="py-20 px-4 pt-32">
         <div className="max-w-7xl mx-auto">
           <motion.h1 
@@ -58,10 +58,10 @@ export default function BlogPage({ locale, translations }: BlogPageProps) {
             {t.title}
           </motion.h1>
 
-          {/* Blog Grid */}
+          {/* Blog posts grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => {
-              // Get localized blog post data if available
+              // Get localized content
               const localizedTitle = post.localizations?.[locale]?.title || post.title;
               const localizedExcerpt = post.localizations?.[locale]?.excerpt || post.excerpt;
               const localizedDate = post.localizations?.[locale]?.date || post.date;

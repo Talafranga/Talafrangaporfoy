@@ -39,7 +39,7 @@ export default function OptimizedImage({
     setImageError(true);
   };
 
-  // Handle external URLs
+  // Check if image is external
   const isExternal = src.startsWith('http') || src.startsWith('https');
   
   // Fallback image for errors
@@ -54,7 +54,7 @@ export default function OptimizedImage({
     );
   }
 
-  // If src is external or there's an error, use the regular img tag
+  // Use regular img tag for external URLs or errors
   if (isExternal || imageError) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
@@ -74,7 +74,7 @@ export default function OptimizedImage({
     );
   }
 
-  // Otherwise use Next.js Image component for optimization
+  // Use Next.js Image component for optimization
   return (
     <Image
       src={src}
